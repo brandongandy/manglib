@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace manglib.Utils
+namespace Mang.Utils
 {
 
   public static class RandomNumber

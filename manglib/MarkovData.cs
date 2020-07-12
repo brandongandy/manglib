@@ -1,10 +1,10 @@
-﻿using manglib.Utils;
+﻿using Mang.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace manglib
+namespace Mang
 {
 
   public class MarkovData

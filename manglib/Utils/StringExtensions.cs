@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace manglib.Utils
+namespace Mang.Utils
 {
   public static class StringExtensions
   {
