@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace manglib.Data.America
+namespace manglib.Data.Names
 {
   public static class Navajo
   {
