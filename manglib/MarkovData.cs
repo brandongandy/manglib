@@ -1,6 +1,7 @@
 ﻿using Mang.Utils;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -22,6 +23,8 @@ namespace Mang
 
     #region Fields
 
+
+    private static readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
     private readonly int tokenLength;
 
     #endregion
@@ -45,6 +48,8 @@ namespace Mang
 
     #endregion
 
+    #region Constructor
+
     /// <summary>
     /// Creates a new MarkovData object using the supplied parameters.
     /// </summary>
@@ -55,7 +60,7 @@ namespace Mang
     /// </param>
     public MarkovData(IEnumerable<string> input, int tokenLength, bool isPreformatted = false)
     {
-      this.tokenLength = tokenLength;
+      this.tokenLength = Math.Clamp(tokenLength, 1, 5);
 
       if (isPreformatted)
       {
@@ -70,6 +75,46 @@ namespace Mang
       MarkovChain = PopulateMarkovChain(Samples);
     }
 
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Returns a single name with no regard for how many times that name may have been generated before.
+    /// </summary>
+    /// <returns>A single Markov-generated name</returns>
+    public string GenerateWord()
+    {
+      string nextName = GetRandomKey();
+
+      // get a random name from the input samples
+      // then generate a word length to aim at
+
+      int minLength = tokenLength + nextName.Length;
+      int maxLength = RandomNumber.Next(minLength + tokenLength, GetRandomSampleWord().Length + minLength);
+      int nameLength = RandomNumber.Next(minLength, maxLength);
+
+      // generate the next name: a random substring of the random sample name
+      // then get a random next letter based on the previous ngram
+
+      while (nextName.Length < nameLength)
+      {
+        string token = nextName.Substring(nextName.Length - tokenLength, tokenLength);
+        if (MarkovChain.ContainsKey(token))
+        {
+          nextName += NextLetter(token);
+        }
+        else
+        {
+          break;
+        }
+      }
+
+      nextName = textInfo.ToTitleCase(nextName.ToLower());
+
+      return nextName;
+    }
+
     public string GetRandomKey()
     {
       return MarkovChain.ElementAt(RandomNumber.Next(MarkovChain.Count)).Key;
@@ -79,6 +124,10 @@ namespace Mang
     {
       return Samples[RandomNumber.Next(Samples.Count)];
     }
+
+    #endregion
+
+    #region Private Methods
 
     /// <summary>
     /// Iterates through the input list and adds only valid values to the useable list of Sample strings.
@@ -174,5 +223,40 @@ namespace Mang
       }
       return str;
     }
+
+    private char NextLetter(string token)
+    {
+      List<char> letters;
+      // get all the letters that come after the passed-in token
+      // then pick a random one and return it
+      if (RandomNumber.NextDouble() > 0.05)
+      {
+        letters = MarkovChain[token];
+      }
+      else
+      {
+        letters = MarkovChain[GetRandomKey()];
+      }
+
+      int nextLetter = RandomNumber.Next(letters.Count);
+
+      var c = letters[nextLetter];
+
+      while (token.IsAllConsonants())
+      {
+        if (c.IsVowel())
+        {
+          return c;
+        }
+        else
+        {
+          c = letters[RandomNumber.Next(letters.Count)];
+        }
+      }
+
+      return c;
+    }
+
+    #endregion
   }
 }
