@@ -65,7 +65,7 @@ namespace Mang.Data.Names
       "Xuchimatzatzin"
     };
 
-    public static readonly List<string> Gods = new List<string>()
+    public static readonly List<string> God = new List<string>()
     {
       "Yacahuitztli",
       "Amimitl",
@@ -458,7 +458,7 @@ namespace Mang.Data.Names
       "Zolton"
     };
 
-    public static readonly List<string> Towns = new List<string>()
+    public static readonly List<string> Town = new List<string>()
     {
       "Acatlan",
       "Acaxochitlan",
@@ -499,7 +499,7 @@ namespace Mang.Data.Names
       "Michoacán"
     };
 
-    public static readonly List<string> Words = new List<string>()
+    public static readonly List<string> Word = new List<string>()
     {
       "Acatl",
       "Atl",
