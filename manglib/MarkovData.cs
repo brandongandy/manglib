@@ -250,7 +250,7 @@ namespace Mang
         }
         else
         {
-          c = letters[RandomNumber.Next(letters.Count)];
+          c = NextLetter(token);
         }
       }
 
