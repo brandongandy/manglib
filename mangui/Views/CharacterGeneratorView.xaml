@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="MangUi.Views.CharacterGeneratorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MangUi.Views"
+             mc:Ignorable="d" 
+             d:Background="White"
+             d:DesignHeight="780" d:DesignWidth="425">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="150" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <GroupBox Grid.Row="0" Header="Options" Margin="5">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="1" Grid.Column="0" Content="Generate New" Width="100"
+              Command="{Binding GenerateCharacterCommand}"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Regenerate Traits" Width="100"
+              Command="{Binding GenerateCharacterCommand}"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="Regernate Name" Width="100"
+              Command="{Binding GenerateCharacterCommand}"/>
+      </Grid>
+    </GroupBox>
+    <GroupBox Grid.Row="1" Header="Output" Margin="5">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="50" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="1">
+          <Label Content="Openness:" Canvas.Left="10" Canvas.Top="10" />
+          <Label Content="{Binding GuardedOptimistic, FallbackValue='Guarded'}" 
+               Canvas.Left="100" Canvas.Top="10" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="10" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="15"
+                Value="{Binding OpennessStress, FallbackValue=5}" />
+
+          <Label Content="Yield:" Canvas.Left="10" Canvas.Top="30" />
+          <Label Content="{Binding DefiantCompliant, FallbackValue='Compliant'}" 
+               Canvas.Left="100" Canvas.Top="30" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="30" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="35"
+                Value="{Binding YieldStress, FallbackValue=5}" />
+
+          <Label Content="Anxiety:" Canvas.Left="10" Canvas.Top="50" />
+          <Label Content="{Binding CarefreeWorried, FallbackValue='Carefree'}" 
+               Canvas.Left="100" Canvas.Top="50" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="50" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="55"
+                Value="{Binding AnxietyStress, FallbackValue=5}" />
+
+          <Label Content="Opinion:" Canvas.Left="10" Canvas.Top="70" />
+          <Label Content="{Binding DecisiveAmbivalent, FallbackValue='Ambivalent'}" 
+               Canvas.Left="100" Canvas.Top="70" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="70" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="75"
+                Value="{Binding OpinionStress, FallbackValue=5}" />
+
+          <Label Content="Bravery:" Canvas.Left="10" Canvas.Top="90" />
+          <Label Content="{Binding IntrepidInhibited, FallbackValue='Intrepid'}" 
+               Canvas.Left="100" Canvas.Top="90" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="90" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="95"
+                Value="{Binding BraveryStress, FallbackValue=5}" />
+
+          <Label Content="Leadership:" Canvas.Left="10" Canvas.Top="110" />
+          <Label Content="{Binding LeaderFollower, FallbackValue='Leader'}" 
+               Canvas.Left="100" Canvas.Top="110" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="110" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="115"
+                Value="{Binding LeadershipStress, FallbackValue=5}" />
+
+          <Label Content="Mindset:" Canvas.Left="10" Canvas.Top="130" />
+          <Label Content="{Binding ProactiveDistractible, FallbackValue='Proactive'}" 
+               Canvas.Left="100" Canvas.Top="130" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="130" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="135"
+                Value="{Binding MindsetStress, FallbackValue=5}" />
+
+          <Label Content="Thinking:" Canvas.Left="10" Canvas.Top="150" />
+          <Label Content="{Binding IntuitivePlanner, FallbackValue='Intuitive'}" 
+               Canvas.Left="100" Canvas.Top="150" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="150" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="155"
+                Value="{Binding ThinkingStress, FallbackValue=5}" />
+
+          <Label Content="Energy:" Canvas.Left="10" Canvas.Top="170" />
+          <Label Content="{Binding IntroExtroverted, FallbackValue='Introverted'}" 
+               Canvas.Left="100" Canvas.Top="170" FontWeight="Bold"/>
+          <Label Content="Stress:"
+               Canvas.Left="190" Canvas.Top="170" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="240" Canvas.Top="175"
+                Value="{Binding ExternalStress, FallbackValue=5}" />
+
+          <Label Content="Confidence:" 
+               Canvas.Left="10" Canvas.Top="200"/>
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="100" Canvas.Top="200"
+                TickFrequency="1" TickPlacement="Both"
+                Value="{Binding ConfidenceLevel, FallbackValue=5}" />
+
+          <Label Content="Dedication:"
+               Canvas.Left="10" Canvas.Top="230" />
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="100" Canvas.Top="230"
+                TickFrequency="1" TickPlacement="Both"
+                Value="{Binding DedicationLevel, FallbackValue=5}" />
+
+          <Label Content="Ambition:"
+               Canvas.Left="10" Canvas.Top="260"/>
+          <Slider Maximum="10" Minimum="0" Width="150"
+                Canvas.Left="100" Canvas.Top="260"
+                TickFrequency="1" TickPlacement="Both"
+                Value="{Binding AmbitionLevel, FallbackValue=5}" />
+
+        </Canvas>
+      </Grid>
+    </GroupBox>
+  </Grid>
+</UserControl>
