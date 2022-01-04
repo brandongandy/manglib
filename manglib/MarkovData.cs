@@ -8,7 +8,7 @@ using System.Text;
 namespace Mang
 {
 
-  public class MarkovData
+  public class MarkovData : IMarkovGenerator
   {
     /*
       TODO: 
@@ -83,16 +83,19 @@ namespace Mang
     /// Returns a single name with no regard for how many times that name may have been generated before.
     /// </summary>
     /// <returns>A single Markov-generated name</returns>
-    public string GenerateWord()
+    public string GenerateWord(int wordLength = 0)
     {
       string nextName = GetRandomKey();
 
       // get a random name from the input samples
       // then generate a word length to aim at
-
       int minLength = tokenLength + nextName.Length;
-      int maxLength = RandomNumber.Next(minLength + tokenLength, GetRandomSampleWord().Length + minLength);
-      int nameLength = RandomNumber.Next(minLength, maxLength);
+      int nameLength = wordLength;
+      if (wordLength <= 0)
+      {
+        wordLength = RandomNumber.Next(minLength + tokenLength, GetRandomSampleWord().Length + minLength);
+        nameLength = RandomNumber.Next(minLength, wordLength);
+      }
 
       // generate the next name: a random substring of the random sample name
       // then get a random next letter based on the previous ngram
