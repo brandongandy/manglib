@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Mang.Data.Names
 {
-  public static class Lovecraft
+  public class Lovecraft
   {
     public static readonly List<string> OldOnes = new List<string>()
     {
-            "Abholos",
+      "Abholos",
       "Alala",
       "S'glhuo",
       "Ammutseba",

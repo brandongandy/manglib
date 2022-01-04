@@ -2,9 +2,9 @@
 
 namespace Mang.Data.Names
 {
-  public static class Saxon
+  public class Saxon
   {
-    public static readonly List<string> FemaleDithematic = new List<string>()
+    public static readonly List<string> Female = new List<string>()
     {
       "Adellufu",
       "Adney",
@@ -356,11 +356,7 @@ namespace Mang.Data.Names
       "Wyneue",
       "Wynflead",
       "Wynyeue",
-      "Wyverun"
-    };
-
-    public static readonly List<string> FemaleMonothematic = new List<string>()
-    {
+      "Wyverun",
       "Acha",
       "Aebba",
       "Aude",
@@ -514,9 +510,9 @@ namespace Mang.Data.Names
       "Yffi"
     };
 
-    public static readonly List<string> MaleDithematic = new List<string>()
+    public static readonly List<string> Male = new List<string>()
     {
-            "Acwald",
+      "Acwald",
       "Acwuld",
       "Acwulf",
       "Adalbert",
@@ -1806,12 +1802,8 @@ namespace Mang.Data.Names
       "Wynsige",
       "Wynstan",
       "Yonwin",
-      "Yric"
-    };
-
-    public static readonly List<string> MaleMonothematic = new List<string>()
-    {
-            "Abba",
+      "Yric",
+      "Abba",
       "Abbo",
       "Abo",
       "Acca",

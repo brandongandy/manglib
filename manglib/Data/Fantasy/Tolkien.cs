@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Mang.Data.Names
 {
-  public static class Tolkien
+  public class Tolkien
   {
     public static readonly List<string> OrcMale = new List<string>()
     {
-            "Azog",
+      "Azog",
       "Bolg",
       "Búrz",
       "Gazbag",

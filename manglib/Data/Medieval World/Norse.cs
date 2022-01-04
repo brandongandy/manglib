@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mang.Data.Names
 {
-  public static class Norse
+  public class Norse
   {
     public static readonly List<string> Female = new List<string>()
     {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mang.Data.Names
 {
-  public static class Korea
+  public class Korea
   {
     public static readonly List<string> Female = new List<string>()
     {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mang.Data.Names
 {
-  public static class Hawaii
+  public class Hawaii
   {
     public static readonly List<string> Female = new List<string>()
     {
@@ -387,7 +387,7 @@ namespace Mang.Data.Names
       "Witoria"
     };
 
-    public static readonly List<string> GenderNeutral = new List<string>()
+    public static readonly List<string> Neutral = new List<string>()
     {
       "Ahonui",
       "Ahulani",

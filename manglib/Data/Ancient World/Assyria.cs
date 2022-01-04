@@ -2,7 +2,7 @@
 
 namespace Mang.Data.Names
 {
-  public static class Assyria
+  public class Assyria
   {
     public static readonly List<string> Male = new List<string>()
     {

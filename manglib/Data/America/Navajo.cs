@@ -2,7 +2,7 @@
 
 namespace Mang.Data.Names
 {
-  public static class Navajo
+  public class Navajo
   {
     public static readonly List<string> Female = new List<string>()
     {

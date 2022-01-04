@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mang.Data.Names
 {
-  public static class Goth
+  public class Goth
   {
     public static readonly List<string> Female = new List<string>()
     {

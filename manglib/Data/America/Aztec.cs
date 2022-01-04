@@ -2,7 +2,7 @@
 
 namespace Mang.Data.Names
 {
-  public static class Aztec
+  public class Aztec
   {
     public static readonly List<string> Female = new List<string>()
     {

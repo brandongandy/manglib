@@ -2,7 +2,7 @@
 
 namespace Mang.Data.Names
 {
-  public static class Persia
+  public class Persia
   {
     public static readonly List<string> Female = new List<string>()
     {
