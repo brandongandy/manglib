@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -15,6 +14,10 @@ namespace Mang
   /// </summary>
   public sealed class PseudoWordGenerator : IMarkovGenerator
   {
+    #region Fields
+
+    private static readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
     private readonly HashSet<string> enders = new HashSet<string>();
     private readonly List<string> starters = new List<string>();
 
@@ -22,6 +25,10 @@ namespace Mang
         Enumerable
             .Range('a', 'z')
             .ToDictionary(a => (char)a, _ => new List<string>());
+
+    #endregion
+
+    #region Constructor
 
     public PseudoWordGenerator(IEnumerable<string> words, int gramLen)
     {
@@ -44,6 +51,10 @@ namespace Mang
       }
     }
 
+    #endregion
+
+    #region Public Methods
+
     public string GenerateWord(int wordLength)
     {
       var result = new StringBuilder(GetRandomStarter());
@@ -54,8 +65,12 @@ namespace Mang
         result.Append(lastGram);
       }
 
-      return result.ToString();
+      return textInfo.ToTitleCase(result.ToString());
     }
+
+    #endregion
+
+    #region Private Methods
 
     private string GetRandomStarter() => GetRandomElement(starters);
 
@@ -69,5 +84,7 @@ namespace Mang
     {
       return Utils.RandomNumber.Next(max);
     }
+
+    #endregion
   }
 }
