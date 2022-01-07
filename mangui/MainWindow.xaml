@@ -73,7 +73,8 @@
               <ComboBoxItem HorizontalContentAlignment="Center">Navajo Place Names</ComboBoxItem>
               <ComboBoxItem HorizontalContentAlignment="Center">Navajo Surname</ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" >
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" 
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}">
               <ComboBox.Style>
                 <Style>
                   <Setter Property="ComboBox.Visibility" Value="Hidden" />
@@ -98,7 +99,8 @@
               <ComboBoxItem HorizontalContentAlignment="Center">Persia Male Names</ComboBoxItem>
               <ComboBoxItem HorizontalContentAlignment="Center">Persia Female Names</ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" >
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" 
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}">
               <ComboBox.Style>
                 <Style>
                   <Setter Property="ComboBox.Visibility" Value="Hidden" />
@@ -118,7 +120,8 @@
               <ComboBoxItem HorizontalContentAlignment="Center">Korea Female Names</ComboBoxItem>
               <ComboBoxItem HorizontalContentAlignment="Center">Korea Surname</ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" >
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" 
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}">
               <ComboBox.Style>
                 <Style>
                   <Setter Property="ComboBox.Visibility" Value="Hidden" />
@@ -147,7 +150,8 @@
               <ComboBoxItem HorizontalContentAlignment="Center">Saxon Female Names</ComboBoxItem>
               <ComboBoxItem HorizontalContentAlignment="Center">Saxon God Names</ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" >
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" 
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}">
               <ComboBox.Style>
                 <Style>
                   <Setter Property="ComboBox.Visibility" Value="Hidden" />
@@ -169,7 +173,8 @@
               <ComboBoxItem HorizontalContentAlignment="Center">Turkey Female Names</ComboBoxItem>
               <ComboBoxItem HorizontalContentAlignment="Center">Turkey Surname</ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" >
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" 
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}">
               <ComboBox.Style>
                 <Style>
                   <Setter Property="ComboBox.Visibility" Value="Hidden" />
@@ -185,7 +190,8 @@
               <ComboBoxItem HorizontalContentAlignment="Center">Hawaii Female Names</ComboBoxItem>
               <ComboBoxItem HorizontalContentAlignment="Center">Hawaii Neutral Names</ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" >
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" 
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}">
               <ComboBox.Style>
                 <Style>
                   <Setter Property="ComboBox.Visibility" Value="Hidden" />
@@ -199,7 +205,8 @@
               <ComboBoxItem IsEnabled="False" FontWeight="Bold">Old Ones</ComboBoxItem>
               <ComboBoxItem HorizontalContentAlignment="Center">Lovecraft OldOne Names</ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" >
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0, 5, 0, 5" 
+                      SelectedItem="{Binding SelectedType, Mode=TwoWay}">
               <ComboBox.Style>
                 <Style>
                   <Setter Property="ComboBox.Visibility" Value="Hidden" />
