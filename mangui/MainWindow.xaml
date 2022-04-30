@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:MangUi.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        Title="MainWindow" Height="600" Width="865" SizeToContent="Width">
+        Title="MangUi" Height="600" Width="865" SizeToContent="Width">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="425" />
