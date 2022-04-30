@@ -10,7 +10,6 @@ namespace Mang
   /// I wanted a secondary generator so I pulled this one for now:
   /// https://stackoverflow.com/questions/3371829/how-can-i-generate-a-random-english-sounding-word-in-net
   /// TODO: Include original diacritics and recapitalize words.
-  /// This is also prone to index out of range exceptions; so that will need to be fixed.
   /// </summary>
   public sealed class PseudoWordGenerator : IMarkovGenerator
   {
@@ -18,7 +17,6 @@ namespace Mang
 
     private static readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
-    private readonly HashSet<string> enders = new HashSet<string>();
     private readonly List<string> starters = new List<string>();
 
     private readonly Dictionary<char, List<string>> gramDict =
@@ -35,8 +33,7 @@ namespace Mang
       foreach (var word in words.Select(w => w.Trim().ToLower()).Where(w => w.Length > gramLen)
           .Where(w => Regex.IsMatch(w, "^[a-z]+$")))
       {
-        starters.Add(word.Substring(0, gramLen));
-        enders.Add(word.Substring(word.Length - gramLen, gramLen));
+        starters.Add(word[..gramLen]);
         for (var i = 0; i < word.Length - gramLen; i++)
         {
           var currentLetter = word[i];
@@ -58,11 +55,19 @@ namespace Mang
     public string GenerateWord(int wordLength)
     {
       var result = new StringBuilder(GetRandomStarter());
-      var lastGram = string.Empty;
-      while (result.Length < wordLength || !enders.Contains(lastGram))
+
+      while (result.Length < wordLength)
       {
-        lastGram = GetRandomGram(result[result.Length - 1]);
-        result.Append(lastGram);
+        try
+        {
+          result.Append(GetRandomGram(result[^1]));
+        }
+        catch
+        {
+          // If the gram has no following characters,
+          // restart the randomization with a new starter.
+          result.Append(GetRandomStarter());
+        }
       }
 
       return textInfo.ToTitleCase(result.ToString());
@@ -74,11 +79,15 @@ namespace Mang
 
     private string GetRandomStarter() => GetRandomElement(starters);
 
-    private string GetRandomGram(char preceding) =>
-      GetRandomElement(gramDict[preceding]);
+    private string GetRandomGram(char preceding)
+    {
+      return GetRandomElement(gramDict[preceding]);
+    }
 
-    private T GetRandomElement<T>(IList<T> collection) =>
-      collection[GetRandomUnsigned(collection.Count - 1)];
+    private T GetRandomElement<T>(IList<T> collection)
+    {
+      return collection[GetRandomUnsigned(collection.Count - 1)];
+    }
 
     private int GetRandomUnsigned(int max)
     {
