@@ -37,7 +37,7 @@ namespace Mang.Data.Names
       "Alethius",
       "Aloysius",
       "Aluredes",
-      "Alypius"
+      "Alypius",
       "Amandus",
       "Amantius",
       "Ambrosius",
@@ -61,25 +61,25 @@ namespace Mang.Data.Names
       "Aquila",
       "Aquilius",
       "Aquillius",
-      "Aratus"
+      "Aratus",
       "Arcavius",
       "Archarius",
       "Arius",
       "Armiger",
       "Arpagius",
-      "Arrianus"
+      "Arrianus",
       "Arruntius",
       "Aruns",
       "Arvina",
       "Asclepiodotus",
       "Asellio",
-      "Asiagenes"
+      "Asiagenes",
       "Asina",
       "Asprenas",
       "Asprenus",
       "Assanius",
       "Athanasius",
-      "Audaios"
+      "Audaios",
       "Audens",
       "Augendus",
       "Augurinus",
