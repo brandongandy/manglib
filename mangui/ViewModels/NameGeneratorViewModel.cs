@@ -12,7 +12,7 @@ using Mang.Utils;
 
 namespace MangUi.ViewModels
 {
-  public class MainWindowViewModel : BindableBase
+  public class NameGeneratorViewModel : BindableBase
   {
     private Dictionary<string, List<string>> markovLists;
     private IMarkovGenerator markovGenerator;
@@ -66,7 +66,7 @@ namespace MangUi.ViewModels
       set { minWordLength = value; NotifyPropertyChanged(); }
     }
 
-    public MainWindowViewModel()
+    public NameGeneratorViewModel()
     {
       InitializeMangData();
     }

@@ -1,7 +1,4 @@
-﻿using MangUi.ViewModels;
-using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows;
 
 namespace MangUi
 {
@@ -13,13 +10,6 @@ namespace MangUi
     public MainWindow()
     {
       InitializeComponent();
-      DataContext = new MainWindowViewModel();
-    }
-
-    private static readonly Regex regex = new Regex("[^0-9.-]+");
-    private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-      e.Handled = regex.IsMatch(e.Text);
     }
   }
 }
