@@ -17,7 +17,7 @@ namespace Mang.Utils
     /// This list *does* include Y.
     /// Vowel list courtesy of https://gist.github.com/m93a/6ac058040443acb3d3b3da773c673850
     /// </summary>
-    private static string vowels = "aeiouyáéíóúýa̋e̋i̋őűàèìòùỳầềồḕṑǜừằȁȅȉȍȕăĕĭŏŭy̆ắằẳẵặḝȃȇȋȏȗǎěǐǒǔy̌a̧ȩə̧ɛ̧i̧ɨ̧o̧u̧âêîôûŷḙṷ"
+    private static readonly string vowels = "aeiouyáéíóúýa̋e̋i̋őűàèìòùỳầềồḕṑǜừằȁȅȉȍȕăĕĭŏŭy̆ắằẳẵặḝȃȇȋȏȗǎěǐǒǔy̌a̧ȩə̧ɛ̧i̧ɨ̧o̧u̧âêîôûŷḙṷ"
       + "ẩểổấếốẫễỗậệộäëïöüÿṳḯǘǚṏǟȫǖṻȧėıȯẏǡạẹịọụỵậȩ̇ǡȱảẻỉỏủỷơướứờừởửỡữợựāǣēīōūȳḗṓȭǭąęįǫųy̨åi̊ůḁǻą̊"
       + "ãẽĩõũỹаэыуояеёюийⱥɇɨøɵꝋʉᵿɏөӫұɨαεηιοωυάέήίόώύὰὲὴὶὸὼὺἀἐἠἰὀὠὐἁἑἡἱὁὡὑᾶῆῖῶῦἆἦἶὦὖἇἧἷὧὗᾳῃῳᾷῇῷ"
       + "ᾴῄῴᾲῂῲᾀᾐᾠᾁᾑᾡᾆᾖᾦᾇᾗᾧϊϋΐΰῒῢῗῧἅἕἥἵὅὥὕἄἔἤἴὄὤὔἂἒἢἲὂὢὒἃἓἣἳὃὣὓᾅᾕᾥᾄᾔᾤᾂᾒᾢᾃᾓᾣæɯɪʏʊøɘɤəɛœɜɞʌɔɐɶɑɒιυ";
@@ -30,6 +30,37 @@ namespace Mang.Utils
     public static bool IsVowel(this char character)
     {
       return IsCharacterVowel(character);
+    }
+
+    /// <summary>
+    /// Behaves like the Delphi Copy function, which is like Substring but is more
+    /// lenient with out of bounds exceptions.
+    /// </summary>
+    /// <param name="input">The source string</param>
+    /// <param name="startIndex">The 0-based index of the start position.</param>
+    /// <param name="length">The length, or how many characters to extract.</param>
+    /// <returns>
+    /// A string that is equivalent to the substring of length <paramref name="length"/> that
+    /// begins at <paramref name="startIndex"/> in this instance, or <see cref="string.Empty"/>
+    /// if the instance is null/empty or startIndex is higher than the input length.
+    /// 
+    /// If the length is longer than the number of characters in the unput after startIndex, then
+    /// just the remaining characters are returned, instead of throwing an exception.
+    /// </returns>
+    public static string Copy(this string input, int startIndex, int length)
+    {
+      if (string.IsNullOrEmpty(input) ||
+          startIndex > input.Length)
+      {
+        return string.Empty;
+      }
+
+      if (input.Length < startIndex + length)
+      {
+        length = input.Length - startIndex;
+      }
+
+      return input.Substring(startIndex, length);
     }
 
     /// <summary>
