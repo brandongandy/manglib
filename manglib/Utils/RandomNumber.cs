@@ -9,7 +9,7 @@ namespace Mang.Utils
   public static class RandomNumber
   {
     // Thanks to: https://scottlilly.com/create-better-random-numbers-in-c/
-    private static RNGCryptoServiceProvider Rand = new RNGCryptoServiceProvider();
+    private static readonly RandomNumberGenerator Rand = RandomNumberGenerator.Create();
 
     /// <summary>
     /// Returns a "better" random number within the specified range.
@@ -67,6 +67,11 @@ namespace Mang.Utils
       double randomValueInRange = Math.Floor(multiplier * range);
 
       return (minValue + randomValueInRange);
+    }
+
+    public static bool FlipCoin()
+    {
+      return NextDouble() > 0.49;
     }
   }
 }
