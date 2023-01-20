@@ -12,7 +12,7 @@ namespace Mang
   {
     #region Fields
 
-    private MarkovData markovData;
+    private MangDefaultGenerator markovData;
 
     private int listSize = 20;
 
@@ -41,7 +41,7 @@ namespace Mang
     /// </summary>
     public NameGenerator()
     {
-      markovData = new MarkovData(Aztec.Female, tokenLength: 3, true);
+      markovData = new MangDefaultGenerator(Aztec.Female, tokenLength: 3, true);
       NameList = new List<string>();
     }
 
@@ -54,14 +54,14 @@ namespace Mang
     /// <param name="tokenLength">The length of the ngram used to generate new names. When in doubt, use 3.</param>
     public NameGenerator(IEnumerable<string> input, int tokenLength)
     {
-      markovData = new MarkovData(input, tokenLength);
+      markovData = new MangDefaultGenerator(input, tokenLength);
       NameList = new List<string>();
     }
 
     #region Public Methods
 
     /// <summary>
-    /// Generates a list of distinct names based on the available <see cref="MarkovData"/>. Does not use names that
+    /// Generates a list of distinct names based on the available <see cref="MangDefaultGenerator"/>. Does not use names that
     /// have already been generated during the lifetime of the current Name Source. Call <see cref="ClearNameList"/>
     /// to clear the list of previously used names.
     /// </summary>
@@ -95,7 +95,7 @@ namespace Mang
     }
 
     /// <summary>
-    /// Repopulates the <see cref="MarkovData"/> instance with new data using values from the
+    /// Repopulates the <see cref="MangDefaultGenerator"/> instance with new data using values from the
     /// <see cref="Data.Names"/> namespace or your own input, with the option of setting <paramref name="tokenLength"/>
     /// and <paramref name="isPreformatted"/>. Clears the <see cref="NameList"/> on switching.
     /// </summary>
@@ -114,12 +114,12 @@ namespace Mang
         return;
       }
 
-      markovData = new MarkovData(nameSource, tokenLength, isPreformatted);
+      markovData = new MangDefaultGenerator(nameSource, tokenLength, isPreformatted);
       NameList.Clear();
     }
 
     /// <summary>
-    /// Repopulates the <see cref="MarkovData"/> instance with new data using values from the
+    /// Repopulates the <see cref="MangDefaultGenerator"/> instance with new data using values from the
     /// <see cref="Data.Names"/> namespace, with the option of setting <paramref name="tokenLength"/>.
     /// Use only with sanitized input (a clean list of strings).
     /// </summary>
@@ -133,7 +133,7 @@ namespace Mang
     }
 
     /// <summary>
-    /// Repopulates the <see cref="MarkovData"/> instance with new data using values from the
+    /// Repopulates the <see cref="MangDefaultGenerator"/> instance with new data using values from the
     /// <see cref="Data.Names"/> namespace. Uses a default token length of 3, and assumes sanitized input.
     /// </summary>
     /// <param name="nameSource">

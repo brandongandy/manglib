@@ -12,7 +12,7 @@ namespace Mang
   /// https://stackoverflow.com/questions/3371829/how-can-i-generate-a-random-english-sounding-word-in-net
   /// TODO: Include original diacritics and recapitalize words.
   /// </summary>
-  public sealed class PseudoWordGenerator : IMarkovGenerator
+  public sealed class MangUpdatedGenerator : IMarkovGenerator
   {
     #region Fields
 
@@ -28,7 +28,7 @@ namespace Mang
 
     #region Constructor
 
-    public PseudoWordGenerator(IEnumerable<string> words, int gramLen)
+    public MangUpdatedGenerator(IEnumerable<string> words, int gramLen)
     {
       foreach (var word in words.Select(w => w.Trim().ToLower()).Where(w => w.Length > gramLen))
       {
@@ -100,14 +100,14 @@ namespace Mang
       return GetRandomElement(gramDict[preceding]);
     }
 
-    private T GetRandomElement<T>(IList<T> collection)
+    private static T GetRandomElement<T>(IList<T> collection)
     {
       return collection[GetRandomUnsigned(collection.Count - 1)];
     }
 
-    private int GetRandomUnsigned(int max)
+    private static int GetRandomUnsigned(int max)
     {
-      return Utils.RandomNumber.Next(max);
+      return RandomNumber.Next(max);
     }
 
     #endregion

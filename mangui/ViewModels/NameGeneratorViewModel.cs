@@ -78,7 +78,7 @@ namespace MangUi.ViewModels
       Generators = new ObservableCollection<string>
       {
         "Mang Default",
-        "Pseudo v1"
+        "Mang v2"
       };
 
       NgramLength = 3;
@@ -86,7 +86,7 @@ namespace MangUi.ViewModels
 
       SelectedSource = "Americas";
       SelectedType = "Aztec Male Names";
-      SelectedGenerator = "Pseudo v1";
+      SelectedGenerator = "Mang v2";
 
       markovLists = ReflectionHelper.GetNameDictionary();
     }
@@ -129,9 +129,9 @@ namespace MangUi.ViewModels
     {
       markovGenerator = SelectedGenerator switch
       {
-        "Mang Default" => new MarkovData(input, ngramLength),
-        "Pseudo v1" => new PseudoWordGenerator(input, ngramLength),
-        _ => new PseudoWordGenerator(input, ngramLength),
+        "Mang Default" => new MangDefaultGenerator(input, ngramLength),
+        "Mang v2" => new MangUpdatedGenerator(input, ngramLength),
+        _ => new MangUpdatedGenerator(input, ngramLength),
       };
       return markovGenerator?.GenerateWord(MinWordLength);
     }

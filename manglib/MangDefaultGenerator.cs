@@ -8,7 +8,7 @@ using System.Text;
 namespace Mang
 {
 
-  public class MarkovData : IMarkovGenerator
+  public class MangDefaultGenerator : IMarkovGenerator
   {
     /*
       TODO: 
@@ -58,7 +58,7 @@ namespace Mang
     /// <param name="isPreformatted">
     /// Specifies whether the <paramref name="input"/> has already been sanitized, or if it needs to be cleaned before use.
     /// </param>
-    public MarkovData(IEnumerable<string> input, int tokenLength, bool isPreformatted = false)
+    public MangDefaultGenerator(IEnumerable<string> input, int tokenLength, bool isPreformatted = false)
     {
       this.tokenLength = Math.Clamp(tokenLength, 1, 5);
 
