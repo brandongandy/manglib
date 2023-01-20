@@ -24,12 +24,20 @@ namespace Mang.Utils
 
     /// <summary>
     /// Determines whether the passed in <see cref="char"/> is a vowel or consonant.
+    /// Treats all non-letter characters as consonants.
     /// </summary>
     /// <param name="character"></param>
     /// <returns>True if the <see cref="char"/> is a vowel.</returns>
     public static bool IsVowel(this char character)
     {
-      return IsCharacterVowel(character);
+      var c = character.ToString().ToLowerInvariant().ToCharArray()[0];
+
+      if (!char.IsLetter(c))
+      {
+        return false;
+      }
+
+      return vowels.Contains(c);
     }
 
     /// <summary>
@@ -81,6 +89,12 @@ namespace Mang.Utils
       return true;
     }
 
+    /// <summary>
+    /// Strips the diacritics from the given <paramref name="text"/> and returns a normalized
+    /// form of the string.
+    /// </summary>
+    /// <param name="text">A string that may contain diacritics that need to be removed.</param>
+    /// <returns>A normalized string with characters containing diacritics converted to their ASCII-relative form.</returns>
     public static string RemoveDiacritics(this string text)
     {
       var normalizedString = text.Normalize(NormalizationForm.FormD);
@@ -96,24 +110,6 @@ namespace Mang.Utils
       }
 
       return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
-    }
-
-    /// <summary>
-    /// Determines whether the given character is a vowel. Treats all non-letter characters as consonants.
-    /// </summary>
-    /// <param name="character">The char value to check</param>
-    /// <returns>True if vowel, false if otherwise</returns>
-    private static bool IsCharacterVowel(char character)
-    {
-      // ew
-      var c = character.ToString().ToLowerInvariant().ToCharArray()[0];
-
-      if (!char.IsLetter(c))
-      {
-        return false;
-      }
-
-      return vowels.Contains(c);
     }
   }
 }
