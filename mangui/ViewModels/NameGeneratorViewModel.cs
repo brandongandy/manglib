@@ -133,7 +133,7 @@ namespace MangUi.ViewModels
         "Pseudo v1" => new PseudoWordGenerator(input, ngramLength),
         _ => new PseudoWordGenerator(input, ngramLength),
       };
-      return markovGenerator?.GenerateWord(9);
+      return markovGenerator?.GenerateWord(MinWordLength);
     }
 
     #endregion
