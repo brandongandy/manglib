@@ -1,32 +1,32 @@
 # Mang
-A Markov chain-based name and word generator
 
-## What it Does
-Mang generates words and names based on input you give it. It uses the input to generate words that sound like they came from the given language without being real words, useful for generating NPC names or giving yourself inspiration for a conlang.
+![screenshot](res/screenshot.png)
 
-The library has a repository of presets available, sourced from all over the world, including some preexisting fantasy sources. It's easy to switch between sources, or run multiple generators at once. It's also easy to give the generator your own input, if you don't want to use the presets.
+Mang is a tool I use while writing to generate names for things and to generate info for characters.
+
+The name generator uses Markov chains to generate realistic-sounding output based on predefined input. The input is usually sourced from real-world cultures, but can also be sourced from any Fantasy setting.
+
+The character generator just randomly selects various traits that may describe a character, and then chooses how much "stress" that trait is under. For example, an Optimistic person with high Stress may be undergoing some life events that are challenging that aspect of themselves.
+
+On their own the sliders mean nothing, but combined can tell a story about that character. For example, a person who has high Confidence and Dedication, whose Defiance, Leadership, and Planning are stressed, can become a revolutionary / rebel type character.
+
+## Behind the Scenes
+
+Mang is powered by `manglib`, a C# library. This has the collection of preset names, but if the library alone is used, any collection of strings can be supplied as input to the name generator.
 
 ## How to Use
 After downloading and linking the project to your own, Mang is simple to use:
 ```
-var ng = new NameGenerator();
-var wordList = ng.GenerateWordList();
+var markovGenerator = new MangDefaultGenerator(myWordList, ngramLength);
+var wordList = markovGenerator.GenerateWord(minimumWordLength);
 ```
 
-Sensible defaults are provided so you only have to worry about picking what "type" of word to generate. To change the type, you can do:
+Sensible defaults are provided so you only have to worry about picking what "type" of word to generate. To change the type, just new up a generator
 ```
-ng.SwitchSource(Navajo.Surname);
+markovGenerator = new MangDefaultGenerator(Lovecraft.OldOnes, ngramLength);
 ```
 
 Then generate a new word list.
-
-### Custom Input
-To give Mang some custom input from which to generate new words, simply construct your own list of strings and pass them into the `SwitchSource` method:
-```
-var myNewList = new List<string>();
-// populate with ~things~
-ng.SwitchSource(myNewList);
-```
 
 ### Token Length (n-grams)
 The Markov chain generator works off tokens, or n-grams, consisting of *x*-character long substrings from the input. Imagine you pass in a word like this `imagine` with a token length of `3`. The Markov data will generate tokens from that string like so:
@@ -38,13 +38,9 @@ gin
 ine
 ```
 
-So, you can imagine that the token length configured has some impact on the output's similarity to the input. In my own use, I've found a length of `3` is typically good enough for unique, but closely related, output. But you can set this yourself when you update your `NameGenerator` source, with an override:
-```
-ng.SwitchSource(Navajo.Surname, tokenLength: 5);
-ng.SwitchSource(myNewList, tokenLength: 2);
-```
+So, you can imagine that the token length configured has some impact on the output's similarity to the input. In my own use, I've found a length of `3` is typically good enough for unique, but closely related, output. But you experiment freely with the token length.
 
-Currently, the value of the `tokenLength` parameter is clamped between 1 and 5 inclusively.
+The value of the `tokenLength` parameter is clamped between 1 and 5 inclusively.
 
 ## Planned Work
 In the future I would like to do a few things with this:
