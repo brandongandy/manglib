@@ -18,7 +18,11 @@ Mang is powered by `manglib`, a C# library. This has the collection of preset na
 After downloading and linking the project to your own, Mang is simple to use:
 ```
 var markovGenerator = new MangDefaultGenerator(myWordList, ngramLength);
-var wordList = markovGenerator.GenerateWord(minimumWordLength);
+var wordList = new List<string>();
+for (var i = 0; i < 15; i++)
+{
+  wordList.Add(markovGenerator.GenerateWord(minimumWordLength);
+}
 ```
 
 Sensible defaults are provided so you only have to worry about picking what "type" of word to generate. To change the type, just new up a generator
