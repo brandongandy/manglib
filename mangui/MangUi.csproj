@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <RootNamespace>MangUi</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>mangui.ico</ApplicationIcon>

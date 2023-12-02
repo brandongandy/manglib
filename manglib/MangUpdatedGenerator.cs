@@ -8,15 +8,17 @@ using Mang.Utils;
 namespace Mang
 {
   /// <summary>
-  /// I wanted a secondary generator so I pulled this one for now:
-  /// https://stackoverflow.com/questions/3371829/how-can-i-generate-a-random-english-sounding-word-in-net
-  /// TODO: Include original diacritics and recapitalize words.
+  /// A less strict Markov generator, in which only the previous letter determines the next letter.
+  /// Enforces original starting token and final token of words.
   /// </summary>
+  /// <remarks>
+  /// https://stackoverflow.com/questions/3371829/how-can-i-generate-a-random-english-sounding-word-in-net
+  /// </remarks>
   public sealed class MangUpdatedGenerator : IMarkovGenerator
   {
     #region Fields
 
-    private static readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+    private static readonly TextInfo TextInfo = new CultureInfo("en-US", false).TextInfo;
 
     private readonly List<string> starters = new List<string>();
     private readonly HashSet<string> enders = new HashSet<string>();
@@ -86,7 +88,7 @@ namespace Mang
         result = result.Remove(result.Length - 1, 1);
       }
 
-      return textInfo.ToTitleCase(result.ToString());
+      return TextInfo.ToTitleCase(result.ToString());
     }
 
     #endregion

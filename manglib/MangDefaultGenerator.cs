@@ -7,7 +7,9 @@ using System.Text;
 
 namespace Mang
 {
-
+  /// <summary>
+  /// A more "strict" Markov generator, in which the previous full token determines the next character chosen.
+  /// </summary>
   public class MangDefaultGenerator : IMarkovGenerator
   {
     /*
@@ -24,7 +26,7 @@ namespace Mang
     #region Fields
 
 
-    private static readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+    private static readonly TextInfo TextInfo = new CultureInfo("en-US", false).TextInfo;
     private readonly int tokenLength;
 
     #endregion
@@ -34,17 +36,17 @@ namespace Mang
     /// <summary>
     /// The list of token/list pairs that constitute the data behind a Markov chain.
     /// </summary>
-    public Dictionary<string, List<char>> MarkovChain { get; set; }
+    private Dictionary<string, List<char>> MarkovChain { get; }
 
     /// <summary>
     /// A list of the sample words used to generate the <see cref="MarkovChain"/> data.
     /// </summary>
-    public List<string> Samples { get; private set; }
+    private readonly List<string> samples;
 
     /// <summary>
     /// "Grammars" consisting of vowel-consonant pairs, denoted by "A" for vowel and "C" for consonant.
     /// </summary>
-    public List<string> Grammars { get; private set; }
+    private List<string> grammars;
 
     #endregion
 
@@ -64,15 +66,15 @@ namespace Mang
 
       if (isPreformatted)
       {
-        Samples = input.ToList();
+        samples = input.ToList();
       }
       else
       {
-        Samples = PopulateSampleList(input);
+        samples = PopulateSampleList(input);
       }
 
-      Grammars = PopulateGrammars(Samples).ToList();
-      MarkovChain = PopulateMarkovChain(Samples);
+      grammars = PopulateGrammars(samples).ToList();
+      MarkovChain = PopulateMarkovChain(samples);
     }
 
     #endregion
@@ -85,12 +87,14 @@ namespace Mang
     /// <returns>A single Markov-generated name</returns>
     public string GenerateWord(int wordLength = 0)
     {
-      string nextName = GetRandomKey();
+      var nextName = new StringBuilder(GetRandomKey());
 
       // get a random name from the input samples
       // then generate a word length to aim at
-      int minLength = tokenLength + nextName.Length;
-      int nameLength = wordLength;
+      var minLength = tokenLength + nextName.Length;
+      var nameLength = wordLength;
+      var numberOfTries = 0;
+      
       if (wordLength <= 0)
       {
         wordLength = RandomNumber.Next(minLength + tokenLength, GetRandomSampleWord().Length + minLength);
@@ -100,37 +104,38 @@ namespace Mang
       // generate the next name: a random substring of the random sample name
       // then get a random next letter based on the previous ngram
 
-      while (nextName.Length < nameLength)
+      while (nextName.Length < nameLength &&
+             numberOfTries < 3)
       {
-        string token = nextName.Substring(nextName.Length - tokenLength, tokenLength);
+        var token = nextName.ToString().Substring(nextName.Length - tokenLength, tokenLength);
         if (MarkovChain.ContainsKey(token))
         {
-          nextName += NextLetter(token);
+          nextName.Append(NextLetter(token));
         }
         else
         {
-          break;
+          nextName.Append(GetRandomKey());
         }
+
+        numberOfTries++;
       }
 
-      nextName = textInfo.ToTitleCase(nextName.ToLower());
-
-      return nextName;
-    }
-
-    public string GetRandomKey()
-    {
-      return MarkovChain.ElementAt(RandomNumber.Next(MarkovChain.Count)).Key;
-    }
-
-    public string GetRandomSampleWord()
-    {
-      return Samples[RandomNumber.Next(Samples.Count)];
+      return TextInfo.ToTitleCase(nextName.ToString().ToLower());
     }
 
     #endregion
 
     #region Private Methods
+
+    private string GetRandomKey()
+    {
+      return MarkovChain.ElementAt(RandomNumber.Next(MarkovChain.Count)).Key;
+    }
+
+    private string GetRandomSampleWord()
+    {
+      return samples[RandomNumber.Next(samples.Count)];
+    }
 
     /// <summary>
     /// Iterates through the input list and adds only valid values to the useable list of Sample strings.
@@ -146,24 +151,23 @@ namespace Mang
         throw new ArgumentNullException(nameof(rawSampleNameList));
       }
 
-      List<string> samples = new List<string>();
+      var sanitizedSamples = new List<string>();
 
-      foreach (string line in rawSampleNameList)
+      foreach (var line in rawSampleNameList)
       {
-        char[] splitChar = new char[] { ',', '\n' };
-        string[] tokens = line.Split(splitChar);
+        var splitChar = new char[] { ',', '\n' };
+        var tokens = line.Split(splitChar);
 
-        foreach (string word in tokens)
+        foreach (var word in tokens)
         {
-          string upper = word.Trim().ToUpper();
-          if (upper.Length >= tokenLength)
+          if (word.Trim().ToUpper().Length >= tokenLength)
           {
-            samples.Add(upper);
+            sanitizedSamples.Add(word);
           }
         }
       }
 
-      return samples;
+      return sanitizedSamples;
     }
 
     /// <summary>
@@ -177,26 +181,21 @@ namespace Mang
         throw new ArgumentNullException(nameof(sampleNameList));
       }
 
-      Dictionary<string, List<char>> markovChain = new Dictionary<string, List<char>>();
+      var markovChain = new Dictionary<string, List<char>>();
 
-      foreach (string word in sampleNameList)
+      foreach (var word in sampleNameList)
       {
-        for (int letter = 0; letter < word.Length - tokenLength; letter++)
+        for (var letter = 0; letter < word.Length - tokenLength; letter++)
         {
-          string token = word.Substring(letter, tokenLength);
+          var token = word.Substring(letter, tokenLength);
 
-          List<char> entry = new List<char>();
-
-          if (markovChain.ContainsKey(token))
+          if (!markovChain.TryGetValue(token, out var ngrams))
           {
-            entry = markovChain[token];
-          }
-          else
-          {
-            markovChain[token] = entry;
+            ngrams = new List<char>();
+            markovChain.Add(token, ngrams);
           }
 
-          entry.Add(word[letter + tokenLength]);
+          ngrams.Add(word[letter + tokenLength]);
         }
       }
 
@@ -218,10 +217,10 @@ namespace Mang
 
     private string ConstructGrammar(string word)
     {
-      string str = "";
-      for (int i = 0; i < word.Length; i++)
+      var str = "";
+      for (var i = 0; i < word.Length; i++)
       {
-        bool flag = word[i].IsVowel();
+        var flag = word[i].IsVowel();
         str = flag ? (str + "A") : (str + "C");
       }
       return str;
@@ -241,7 +240,7 @@ namespace Mang
         letters = MarkovChain[GetRandomKey()];
       }
 
-      int nextLetter = RandomNumber.Next(letters.Count);
+      var nextLetter = RandomNumber.Next(letters.Count);
 
       var c = letters[nextLetter];
 

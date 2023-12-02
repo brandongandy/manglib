@@ -1,0 +1,116 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MangXp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:MangXp"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        Width="800" Height="600"
+        xmlns:vw="clr-namespace:MangXp.Views"
+        SizeToContent="WidthAndHeight"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        x:Class="MangXp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/mangui.ico"
+        Title="Mang"
+        Padding="5">
+  <Window.Styles>
+    <Style Selector="HeaderedContentControl">
+
+      <SimpleTheme />
+
+      <Style.Resources>
+        <conv:RectGeometryConverter x:Key="rectConv" />
+        <Thickness x:Key="BorderMargin">0,10,0,0</Thickness>
+        <Thickness x:Key="BorderPadding">5,10,5,5</Thickness>
+
+      </Style.Resources>
+
+      <Setter
+          Property="Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Grid Name="GBGrid">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+
+              <TextBlock Name="GBHeaderText"
+                  Margin="5,0,0,0"
+                  Padding="5,0,5,0"
+                  ZIndex="1"
+                  TextBlock.FontWeight="Bold" Text="{TemplateBinding Header}">
+              </TextBlock>
+
+              <Border Name="GBBorder"
+                  Grid.RowSpan="2" Grid.ColumnSpan="2"
+                  Margin="{DynamicResource BorderMargin}"
+                  Padding="{DynamicResource BorderPadding}"
+                  BorderBrush="{TemplateBinding Foreground}"
+                  BorderThickness="1">
+                <Rectangle
+                    Height="{Binding #GBContent.Height}"
+                    Width="{Binding #GBContent.Width}" />
+                <Border.Clip>
+                  <CombinedGeometry
+                      GeometryCombineMode="Exclude"
+                      Geometry1="{Binding #GBGrid.Bounds, Mode=OneWay, Converter={StaticResource rectConv}}"
+                      Geometry2="{Binding #GBHeaderText.Bounds, Mode=OneWay, Converter={StaticResource rectConv}}" />
+                </Border.Clip>
+              </Border>
+
+              <Border Name="GBContent"
+                  Grid.RowSpan="2" Grid.ColumnSpan="2"
+                  Margin="{DynamicResource BorderMargin}"
+                  Padding="{DynamicResource BorderPadding}"
+                  BorderThickness="0">
+
+                <ContentPresenter Content="{TemplateBinding Content}" />
+              </Border>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Styles>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" MaxWidth="450"></ColumnDefinition>
+      <ColumnDefinition Width="Auto" MinWidth="250"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <HeaderedContentControl Header="Name Generator"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Margin="5 0">
+      <vw:MangView />
+    </HeaderedContentControl>
+    <HeaderedContentControl Header="Character Generator"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="5 0">
+    <vw:CharacterView />
+
+    </HeaderedContentControl>
+    <HeaderedContentControl Header="Scratch Pad"
+                            Grid.Row="0" Grid.Column="1"
+                            Margin="5 0">
+      <Panel>
+        <TextBox Height="125"
+                 TextWrapping="WrapWithOverflow"
+                 Width="226"
+                 AcceptsReturn="True"/>
+      </Panel>
+    </HeaderedContentControl>
+  </Grid>
+</Window>

@@ -32,5 +32,27 @@ namespace Mang.Characters
         drive.Randomize();
       }
     }
+
+    public Character GenerateCharacter()
+    {
+      var character = new Character();
+
+      foreach (var trait in character.Traits)
+      {
+        trait.Randomize();
+      }
+
+      foreach (var trait in character.Types)
+      {
+        trait.Randomize();
+      }
+
+      foreach (var drive in character.Drives)
+      {
+        drive.Randomize();
+      }
+
+      return character;
+    }
   }
 }
