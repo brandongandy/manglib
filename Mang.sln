@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mang", "manglib\Mang.csproj", "{96447280-3AD5-4675-BE72-EB744E4CCBAA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangUi", "mangui\MangUi.csproj", "{68D1A3C2-29EB-41F0-99C7-199CE232C930}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangXp", "MangXp\MangXp.csproj", "{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaAero", "..\avalonia-aero-theme-migration-avalonia-11-0-5\src\AvaloniaAero\AvaloniaAero.csproj", "{AB196EFF-5E37-4475-9004-69FBD74AFB7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{68D1A3C2-29EB-41F0-99C7-199CE232C930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68D1A3C2-29EB-41F0-99C7-199CE232C930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68D1A3C2-29EB-41F0-99C7-199CE232C930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

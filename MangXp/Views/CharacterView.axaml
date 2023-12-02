@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MangXp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MangXp.Views.CharacterView"
+             x:DataType="vm:CharacterViewModel">
+  <StackPanel Spacing="10">
+    <Button Width="100" HorizontalAlignment="Left" Command="{Binding GenerateCharacterCommand}">Generate</Button>
+    <StackPanel>
+      <Label Canvas.Left="10" FontSize="14" FontWeight="Black" 
+             Content="{Binding Character.MeyersBriggsType}"/>
+      <Label FontSize="14"
+             Content="{Binding Character.MeyersBriggsClassAndName}"/>
+
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Energy:</Label>
+        <Label Content="{Binding Character.Energy}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Mind:</Label>
+        <Label Content="{Binding Character.Mind}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Nature:</Label>
+        <Label Content="{Binding Character.Nature}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Tactics:</Label>
+        <Label Content="{Binding Character.Tactics}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Openness:</Label>
+        <Label Content="{Binding Character.Openness}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Yield:</Label>
+        <Label Content="{Binding Character.Yield}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Anxiety:</Label>
+        <Label Content="{Binding Character.Anxiety}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Opinion:</Label>
+        <Label Content="{Binding Character.Opinion}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Bravery:</Label>
+        <Label Content="{Binding Character.Bravery}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Leadership:</Label>
+        <Label Content="{Binding Character.Leadership}"></Label>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5">
+        <Label Width="90" FontWeight="Bold">Mindset:</Label>
+        <Label Content="{Binding Character.Mindset}"></Label>
+      </StackPanel>
+    </StackPanel>
+  </StackPanel>
+</UserControl>

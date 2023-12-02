@@ -1,0 +1,206 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MangXp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="600"
+             x:Class="MangXp.Views.MangView"
+             x:DataType="vm:MangViewModel">
+  <DockPanel>
+    <StackPanel Orientation="Horizontal" 
+                DockPanel.Dock="Top">
+      <Label Width="125"
+             VerticalAlignment="Center">Source:</Label>
+      <ComboBox Name="SourceCombo"
+                Width="300"
+                HorizontalContentAlignment="Center"
+                SelectedIndex="1"
+                SelectedItem="{Binding SelectedSource}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Semi-Historical</ComboBoxItem>
+        <ComboBoxItem x:Name="Americas" HorizontalContentAlignment="Center">Americas</ComboBoxItem>
+        <ComboBoxItem x:Name="AncientWorld" HorizontalContentAlignment="Center">Ancient World</ComboBoxItem>
+        <ComboBoxItem x:Name="EastAsia" HorizontalContentAlignment="Center">East Asia</ComboBoxItem>
+        <ComboBoxItem x:Name="MedievalEurope" HorizontalContentAlignment="Center">Medieval Europe</ComboBoxItem>
+        <ComboBoxItem x:Name="MiddleEast" HorizontalContentAlignment="Center">Middle East</ComboBoxItem>
+        <ComboBoxItem x:Name="Pacific" HorizontalContentAlignment="Center">Pacific</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Fantasy</ComboBoxItem>
+        <ComboBoxItem x:Name="Lovecraft" HorizontalContentAlignment="Center">Lovecraft</ComboBoxItem>
+        <ComboBoxItem x:Name="Tolkien" HorizontalContentAlignment="Center">Tolkien</ComboBoxItem>
+      </ComboBox>
+    </StackPanel>
+    <StackPanel DockPanel.Dock="Top" 
+                Orientation="Horizontal"
+                Margin="0 5">
+      <Label Width="125"
+             VerticalAlignment="Center">Type:</Label>
+
+      <ComboBox MinWidth="300" SelectedIndex="0" IsEnabled="False"
+                IsVisible="{Binding IsPlaceholderVisible}">
+        <ComboBoxItem>Select a Source</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsAmericaVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Aztec</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Aztec Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Aztec Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Aztec God Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Aztec Town Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Aztec Word</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Inca</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Inca Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Inca Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Navajo</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Navajo Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Navajo Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Navajo Place Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Navajo Surname</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsAncientWorldVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Assyria</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Assyria Male Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Egypt</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Egypt Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Egypt Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Greece</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Greece Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Greece Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Greece God Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Greece Town Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Persia</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Persia Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Persia Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Rome</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Rome Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Rome Female Names</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsEastAsiaVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Japan</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Japan Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Japan Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Japan Surname</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Korea</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Korea Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Korea Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Korea Surname</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsMedievalEuropeVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">England</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">England Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">England Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Germany</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Germany Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Germany Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Goth</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Goth Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Goth Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Norse</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Norse Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Norse Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Norse God Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Saxon</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Saxon Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Saxon Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Saxon God Names</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsMiddleEastVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Hebrew</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Hebrew Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Hebrew Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Iran</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Iran Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Iran Female Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Turkey</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Turkey Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Turkey Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Turkey Surname</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsPacificVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Hawaii</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Hawaii Male Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Hawaii Female Names</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Hawaii Neutral Names</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsLovecraftVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Old Ones</ComboBoxItem>
+        <ComboBoxItem HorizontalContentAlignment="Center">Lovecraft OldOnes Names</ComboBoxItem>
+      </ComboBox>
+      <ComboBox IsVisible="{Binding IsTolkienVisible}"
+                MinWidth="300"
+                SelectedIndex="1"
+                HorizontalContentAlignment="Center"
+                SelectedItem="{Binding SelectedType}">
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Elves</ComboBoxItem>
+        <ComboBoxItem>Tolkien Noldorin Names</ComboBoxItem>
+        <ComboBoxItem>Tolkien Sindarin Names</ComboBoxItem>
+        <ComboBoxItem>Tolkien Quenya Names</ComboBoxItem>
+        <ComboBoxItem IsEnabled="False" FontWeight="Bold">Orcs</ComboBoxItem>
+        <ComboBoxItem>Tolkien Orc Names</ComboBoxItem>
+      </ComboBox>
+    </StackPanel>
+    <StackPanel DockPanel.Dock="Top" 
+                Orientation="Horizontal"
+                Margin="0 5">
+      <Label Width="125"
+             VerticalAlignment="Center">Name Gen:</Label>
+      <ComboBox
+        MinWidth="300"
+        HorizontalContentAlignment="Center"
+        SelectedIndex="{Binding MarkovIndex}">
+        <ComboBoxItem>Mang v1 (Strict)</ComboBoxItem>
+        <ComboBoxItem>Mang v2 (Loose)</ComboBoxItem>
+      </ComboBox>
+    </StackPanel>
+    <StackPanel DockPanel.Dock="Top"
+                Orientation="Horizontal"
+                Margin="0 5">
+      <Label Width="120" VerticalAlignment="Center">Min. Length:</Label>
+      <NumericUpDown Minimum="6" Maximum="24" Value="{Binding MinimumWordLength}"
+                     FormatString="0"
+                     Margin="5 0"/>
+      <Label Margin="10 0 0 0" VerticalAlignment="Center">Ngram Size:</Label>
+      <NumericUpDown Minimum="3" Maximum="6" Value="{Binding NgramLength}"
+                     FormatString="0"
+                     Margin="5 0"
+                     ></NumericUpDown>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal"
+                DockPanel.Dock="Top"
+                Margin="0 5">
+      <Label Width="120" VerticalAlignment="Center">Words:</Label>
+      <NumericUpDown Minimum="15" Maximum="30" Value="{Binding WordsToGenerate}"
+                     FormatString="0"
+                     Margin="5 0"></NumericUpDown>
+    </StackPanel>
+    <Button DockPanel.Dock="Top" 
+            Margin="125 5" Width="100" HorizontalAlignment="Left"
+            Command="{Binding GenerateCommand}">Generate</Button>
+    <TextBox Margin="5" MinHeight="200"
+             Text="{Binding NameOutput}"
+             Height="250"/>
+  </DockPanel>
+</UserControl>
