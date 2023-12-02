@@ -9,9 +9,10 @@
         xmlns:vw="clr-namespace:MangXp.Views"
         SizeToContent="WidthAndHeight"
         CanResize="False"
+        WindowStartupLocation="CenterScreen"
         x:Class="MangXp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/mangui.ico"
         Title="Mang"
         Padding="5">
   <Window.Styles>
@@ -106,7 +107,8 @@
                             Margin="5 0">
       <Panel>
         <TextBox Height="125"
-                 Margin="3 0"
+                 TextWrapping="WrapWithOverflow"
+                 Width="226"
                  AcceptsReturn="True"/>
       </Panel>
     </HeaderedContentControl>

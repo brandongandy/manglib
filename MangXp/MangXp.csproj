@@ -12,6 +12,14 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="mangui.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\mangui.ico" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.0.5" />
