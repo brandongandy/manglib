@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangUi", "mangui\MangUi.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MangXp", "MangXp\MangXp.csproj", "{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaAero", "..\avalonia-aero-theme-migration-avalonia-11-0-5\src\AvaloniaAero\AvaloniaAero.csproj", "{AB196EFF-5E37-4475-9004-69FBD74AFB7D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{950A1F7D-BDC6-4613-A6CF-EABC85098EE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB196EFF-5E37-4475-9004-69FBD74AFB7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

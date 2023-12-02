@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Mang;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReactiveUI;
 using Mang.Utils;
 
