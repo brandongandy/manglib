@@ -105,7 +105,7 @@ namespace Mang
       // then get a random next letter based on the previous ngram
 
       while (nextName.Length < nameLength &&
-             numberOfTries < 100)
+             numberOfTries < 3)
       {
         var token = nextName.ToString().Substring(nextName.Length - tokenLength, tokenLength);
         if (MarkovChain.ContainsKey(token))
