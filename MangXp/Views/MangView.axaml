@@ -8,7 +8,7 @@
              x:DataType="vm:MangViewModel">
   <DockPanel>
     <StackPanel Orientation="Horizontal" 
-                DockPanel.Dock="Top">
+                DockPanel.Dock="Top" Margin="0 0 0 5">
       <Label Width="125"
              VerticalAlignment="Center">Source:</Label>
       <ComboBox Name="SourceCombo"
@@ -30,7 +30,7 @@
     </StackPanel>
     <StackPanel DockPanel.Dock="Top" 
                 Orientation="Horizontal"
-                Margin="0 5">
+                Margin="0 0 0 5">
       <Label Width="125"
              VerticalAlignment="Center">Type:</Label>
 
@@ -164,7 +164,7 @@
     </StackPanel>
     <StackPanel DockPanel.Dock="Top" 
                 Orientation="Horizontal"
-                Margin="0 5">
+                Margin="0 0 0 5">
       <Label Width="125"
              VerticalAlignment="Center">Name Gen:</Label>
       <ComboBox
@@ -177,7 +177,7 @@
     </StackPanel>
     <StackPanel DockPanel.Dock="Top"
                 Orientation="Horizontal"
-                Margin="0 5">
+                Margin="0 0 0 5">
       <Label Width="120" VerticalAlignment="Center">Min. Length:</Label>
       <NumericUpDown Minimum="6" Maximum="24" Value="{Binding MinimumWordLength}"
                      FormatString="0"
@@ -190,14 +190,14 @@
     </StackPanel>
     <StackPanel Orientation="Horizontal"
                 DockPanel.Dock="Top"
-                Margin="0 5">
+                Margin="0 0 0 5">
       <Label Width="120" VerticalAlignment="Center">Words:</Label>
       <NumericUpDown Minimum="15" Maximum="30" Value="{Binding WordsToGenerate}"
                      FormatString="0"
                      Margin="5 0"></NumericUpDown>
     </StackPanel>
     <Button DockPanel.Dock="Top" 
-            Margin="125 5" Width="100" HorizontalAlignment="Left"
+            Margin="125 0 0 0" Width="100" HorizontalAlignment="Left"
             Command="{Binding GenerateCommand}">Generate</Button>
     <TextBox Margin="5" MinHeight="200"
              Text="{Binding NameOutput}"
